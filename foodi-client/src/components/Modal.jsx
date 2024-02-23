@@ -11,8 +11,8 @@ const Modal = () => {
     handleSubmit,reset,
     formState: { errors },
   } = useForm();
-  const { signUpwithGmail, login } = useContext(AuthContext);
-  const [errorMessage,setErrorMessage] = useState("");
+  const { signUpWithGmail, login } = useContext(AuthContext);
+  const [errorMessage,seterrorMessage] = useState("");
 
 
 
