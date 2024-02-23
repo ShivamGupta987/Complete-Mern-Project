@@ -2,12 +2,14 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import Home from "../pages/home/Home";
 import Menu from "../pages/shop/Menu";
+import Order from "../pages/dashboard/Order.jsx";
 
 import Salad from "../pages/shop/Menu";
 import Pizza from "../pages/shop/Menu";
 import Signup from "../components/Signup";
-import PrivateRouter from "../PrivateRouter/PrivateRouter";
-import UpdateProfile from "../pages/dashboard/UpdateProfile";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import UserProfile from "../pages/dashboard/UserProfile";
+
 import CartPage from "../pages/shop/CartPage";
 // import DashboardLayout from "../layout/DashboardLayout";
 // import Dashboard from "../pages/dashboard/admin/Dashboard";
@@ -30,16 +32,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/menu",
-        element: <PrivateRouter><Menu/></PrivateRouter>,
+        element: <Menu/>
       },
       {
         path: "/salad",
-        element: <PrivateRouter><Salad/></PrivateRouter>,
+        element: <PrivateRoute><Salad/></PrivateRoute>,
         
       },
       {
         path: "/pizza",
-        element: <PrivateRouter><Pizza/></PrivateRouter>,
+        element: <PrivateRoute><Pizza/></PrivateRoute>,
         
       },
       {
@@ -48,8 +50,12 @@ const router = createBrowserRouter([
         
       },
       {
+        path: "/order",
+        element:<PrivateRoute><Order/></PrivateRoute>
+      },
+      {
         path:'/update-profile',
-        element:<UpdateProfile/>
+        element:<UserProfile/>
       }
     ],
   },
@@ -63,10 +69,10 @@ const router = createBrowserRouter([
     },
     {
       path:"/dashboard",
-      element: <PrivateRouter><DashboardLayout/></PrivateRouter>,   
+      element: <PrivateRoute><DashboardLayout/></PrivateRoute>,   
       children:[
         {
-          path: "",
+          path: '',
           element:<Dashboard/>
 
         },

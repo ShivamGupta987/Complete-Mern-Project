@@ -12,10 +12,15 @@ const Cards = ({ item }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate()
   const location = useLocation()
-  const { refetch } = useCart();
+  const { cart,refetch } = useCart();
   // add to cart
 
-  const handleAddToCart = (item) => {
+  
+  const handleHeartClick = () => {
+    setIsHeartFilled(!isHeartFilled);
+  };
+
+  const handleAddToCart = item => {
     // console.log(item);
     if(user && user?.email){
         const cartItem = {menuItemId: _id, name, quantity : 1, image, price, email: user.email}
@@ -64,24 +69,19 @@ const Cards = ({ item }) => {
     }
 }
 
-  const handleHeartClick = () => {
-    setIsHeartFilled(!isHeartFilled);
-  };
 
   return (
     <div
       to={`/menu/${item._id}`}
-      className="card w-96 bg-base-100 shadow-xl relative"
+      className="card   shadow-xl relative mr-5 md:my-5"
     >
-      <div
-        className={`rating gap-1 absolute right-2 top-2 heartStar p-4 bg-green`}
+     <div
+        className={`rating gap-1 absolute right-2 top-2 p-4 heartStar bg-green ${
+          isHeartFilled ? "text-rose-500" : "text-white"
+        }`}
+        onClick={handleHeartClick}
       >
-        <FaHeart
-          className={`h-5 w-5 cursor-pointer ${
-            isHeartFilled ? "text-rose-500" : "text-white"
-          }`}
-          onClick={handleHeartClick}
-        />
+        <FaHeart className="w-5 h-5 cursor-pointer" />
       </div>
       <Link to={`/menu/${item._id}`}>
         <figure>
@@ -95,10 +95,10 @@ const Cards = ({ item }) => {
 
       <div className="card-body">
         <Link to={`/menu/${item._id}`}>
-          <h2 className="card-title">{item.name}</h2>
+          <h2 className="card-title">{item.name}!</h2>
         </Link>
         <p>Description of the item</p>
-        <div className="card-actions justify-between items-center">
+        <div className="card-actions justify-between items-center mt-2">
           <h5 className="font-semibold">
             <span className="text-sm text-red">$</span>
             {item.price}

@@ -5,8 +5,8 @@ import { FaFilter } from "react-icons/fa";
 const Menu = () => {
   // uses array in usestate for menu.json file is array file
   const [menu, setMenu] = useState([]);
-  const [salad, setSalad] = useState([]);
-  const [pizza, setPizza] = useState([]);
+  // const [salad, setSalad] = useState([]);
+  // const [pizza, setPizza] = useState([]);
 
   const [filteredItems, setFilteredItems] = useState([]);
 
@@ -19,29 +19,44 @@ const Menu = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   // items per page default is 6
-  const [itemsPerPage, setitemsPerPage] = useState(6);
+  const [itemsPerPage] = useState(6);
 
   //loading data
 
+  // useEffect(() => {
+  //   // data fetched from backend
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch("http://localhost:6001/menu");
+  //       const data = await response.json();
+  //       // Ensure data is an array
+  //       if (!Array.isArray(data)) {
+  //         console.error("Fetched data is not an array", data);
+  //         data = []; // Default to an empty array if data is not as expected
+  //       }
+  //       setMenu(data);
+  //       setFilteredItems(data);
+  //     } catch (error) {
+  //       console.log("Error while fetch data", error);
+  //     }
+  //   };
+  
+  //   fetchData(); // Call fetchData here
+  // }, []);
   useEffect(() => {
-    // data fetched from backend
+    // Fetch data from the backend
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:6001/menu");
-        let data = await response.json();
-        // Ensure data is an array
-        if (!Array.isArray(data)) {
-          console.error("Fetched data is not an array", data);
-          data = []; // Default to an empty array if data is not as expected
-        }
+        const data = await response.json();
         setMenu(data);
-        setFilteredItems(data);
+        setFilteredItems(data); // Initially, display all items
       } catch (error) {
-        console.log("Error while fetch data", error);
+        console.error("Error fetching data:", error);
       }
     };
-  
-    fetchData(); // Call fetchData here
+
+    fetchData();
   }, []);
 
   // filtering function our data category se

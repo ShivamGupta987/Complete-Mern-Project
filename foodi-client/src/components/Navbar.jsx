@@ -1,19 +1,20 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import logo from "/logo.png";
 
 import { FaRegUser } from "react-icons/fa6";
 import Modal from "./Modal";
-import { AuthContext } from "../contexts/AuthProvider";
+// import { AuthContext } from "../contexts/AuthProvider";
+import useAuth from "../hooks/useAuth";
 import { Link } from "react-router-dom";
-import Profile from "./profile";
+import Profile from "./Profile.jsx";
 import useCart from "../hooks/useCart";
 
 const Navbar = () => {
   const [isSticky, setSticky] = useState(false);
-  const {user} = useContext(AuthContext)
-  console.log(user)
+  const { user, loading } = useAuth();
+  // console.log(user)
 
-  const[cart,refetch]= useCart();
+  const [cart, refetch] = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -140,45 +141,53 @@ const Navbar = () => {
             </svg>
           </button>
 
-          {/* cart tiems */}
-         <Link to = "cart-page">
-         <label
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle mr-3 lg:flex hidden items-center justify-center"
-          >
-            <div className="indicator">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />
-              </svg>
-              <span className="badge badge-sm indicator-item">{cart.length || 0}</span>
-            </div>
-          </label>
-         </Link>
+          {/* shooping cart  */}
+          <Link to="/cart-page">
+            <label
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle mr-3 lg:flex hidden items-center justify-center"
+            >
+              <div className="indicator">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span className="badge badge-sm indicator-item">
+                  {cart.length || 0}
+                </span>
+              </div>
+            </label>
+          </Link>
 
           {/* Login btn */}
-        {
-          // age user hai toh logout hsow hoga navbar ko warna login hoga agr user signin nhi hai toh
-          user? <Profile user={user}/> :<button
-          onClick={() => document.getElementById("my_modal_5").showModal()}
-          className="btn bg-green rounded-full px-6 text-white flex items-center gap-2"
-        >
-          <FaRegUser />
-          Login
-        </button>
-        }
-            <Modal/>
+          {
+            // age user hai toh logout hsow hoga navbar ko warna login hoga agr user signin nhi hai toh
+            user ? <>
+              <Profile user={user} />
+              </>: 
+              <button
+                onClick={() =>
+                  document.getElementById("my_modal_5").showModal()
+                }
+                className="btn bg-green rounded-full px-6 text-white flex items-center gap-2"
+              >
+                <FaRegUser />
+                Login
+              </button>
+            
+          }
+          <Modal />
         </div>
       </div>
     </header>

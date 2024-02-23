@@ -79,12 +79,16 @@
 
 // export default AuthProvider;
 
-
-
-import React, { createContext, useEffect, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, updateProfile, onAuthStateChanged } from "firebase/auth";
-import app from "../firebase/firebase.config";
+import React from 'react';
+import { createContext } from 'react';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import app from '../firebase/firebase.config';
 import axios from 'axios';
+
+
+
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -95,10 +99,13 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signUpwithGmail = () => {
+    setLoading(true);
+
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -107,6 +114,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    localStorage.removeItem('genius-token');
     return signOut(auth);
   };
   
@@ -120,15 +128,12 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      if (currentuser) {
-        setUser(currentuser);
-
-
-
-        // IN USEEFFECT USE JWT TOKEN 
-        const userInfo = {email: currentuser.email}
-        axios.post('http://localhost:6001/jwt',)
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser);
+      if (currentUser) {
+        // IN currentUser USE JWT TOKEN 
+        const userInfo = {email: currentUser.email}
+        axios.post('http://localhost:6001/jwt',userInfo)
         .then( (response) => {
           // console.log(response.data.token);
           if(response.data.token){
@@ -138,7 +143,7 @@ const AuthProvider = ({ children }) => {
 
         // setLoading(false);
       } else {
-        setUser(null);
+        // setUser(null);
         // console.log("")
         localStorage.removeItem("access-token")
         
@@ -147,7 +152,9 @@ const AuthProvider = ({ children }) => {
 
     });
 
-    return unsubscribe;
+    return () =>{
+      return unsubscribe();
+  }
   }, []);
 
   const authInfo = {
