@@ -9,7 +9,7 @@ import axios from "axios";
 const Modal = () => {
   const [errorMessage, seterrorMessage] = useState("");
 
-  const { signUpWithGmail, login } = useContext(AuthContext);
+  const { signUpwithGmail, login } = useContext(AuthContext);
   // redirectin to home page or specific page
   const location = useLocation();
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const Modal = () => {
 
   // google sign in login
   const handleRegister = () => {
-    signUpWithGmail()
+    signUpwithGmail()
       .then((result) => {
         const user = result.user;
         const userInfor = {
