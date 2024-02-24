@@ -10,8 +10,7 @@ const verifyAdmin = async (req, res, next) => {
     if(!isAdmin){
         return res.status(403).send({message: "forbidden access!"})
     }
-
     next();
 };
+module.exports = verifyAdmin; 
 
-module.exports = verifyAdmin;
