@@ -12,7 +12,6 @@ const getCartByEmail = async(req,res) =>{
         res.status(500).json({message: error.message})
     }
 }
-
 // post a cart when add to cart btn click 
 const addTocart = async(req,res) =>{
     const{menuItemId,name,recipe,image,price,quantity,email} = req.body
@@ -32,12 +31,8 @@ const addTocart = async(req,res) =>{
 
     }catch(error){
         res.status(500).json({message: error.message})
-
-
     }
-
 }
-
 // delete the acrt
 
 const deleteCart = async(req,res) =>{
@@ -48,11 +43,8 @@ const deleteCart = async(req,res) =>{
             res.status(401).json({message: "Cart Items not found!"})
         }
         return res.status(200).json({message : "Cart Item Deleted Successfully!"})
-
     }catch{
         res.status(500).json({message: error.message})
-
-
     }
 };
 
@@ -61,7 +53,6 @@ const deleteCart = async(req,res) =>{
 const updateCart = async(req,res) =>{
     const cartId = req.params.id; 
     const{menuItemId,name,recipe,image,price,quantity,email} = req.body;
-
     try {
         const updatedCart = await Carts.findByIdAndUpdate(cartId,{
             menuItemId,name,recipe,image,price,quantity,email
