@@ -20,12 +20,14 @@ import AddMenu from "../pages/dashboard/admin/AddMenu";
 import ManageItems from "../pages/dashboard/admin/ManageItems";
 import UpdateMenu from "../pages/dashboard/admin/UpdateMenu";
 import Login from "../components/Login";
+import Payment from "../pages/shop/Payment.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
     children: [
+      // user routes
       {
         path: "/",
         element: <Home />,
@@ -68,6 +70,11 @@ const router = createBrowserRouter([
       element:<Login/>
     },
     {
+      path: '/process-checkout',
+      element : <Payment/>
+    },
+    // admin routes
+    {
       path:"/dashboard",
       element: <PrivateRoute><DashboardLayout/></PrivateRoute>,   
       children:[
@@ -94,7 +101,8 @@ const router = createBrowserRouter([
           path: "update-menu/:id",
           element: <UpdateMenu/>,
           loader: ({params}) => fetch(`http://localhost:6001/menu/${params.id}`)
-        }
+        },
+       
       ]
     },
     

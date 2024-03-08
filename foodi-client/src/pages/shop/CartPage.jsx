@@ -231,14 +231,18 @@ const CartPage = () => {
               Total Price:{" "}
               <span id="total-price">${orderTotal.toFixed(2)}</span>
             </p>
-            <button className="btn btn-md bg-green text-white px-8 py-1">
+            
+          <Link to = "/process-checkout">
+          <button className="btn btn-md bg-green text-white px-8 py-1">
               Procceed to Checkout
             </button>
+          
+          </Link>
           </div>
         </div>
       </div> : <div className="text-center mt-20">
         <p>Cart is empty. Please add products.</p>
-        <Link to="/menu"><button className="btn bg-green text-white mt-3">Back to Menu</button></Link>
+        <Link to="/menu"><button className="btn bg-green text-white mt-5 ">Back to Menu</button></Link>
       </div>
       }
       

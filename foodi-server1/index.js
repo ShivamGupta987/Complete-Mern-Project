@@ -9,6 +9,8 @@ const mongoose = require("mongoose");
 app.use(cors());
 app.use(express.json());
 
+const stripe = require("stripe")('sk_test_51OngHjSCy0AIfngsMpEUW81y0anJSJ6A73tEu6pfMWaemOAMppgFrmi6inDAeCd4QGfi031ktbUXs7aDhK18ofRy00Zz8pxEsA');
+
 // mongodb conncetion using mongoosse
 
 //sg804595
@@ -59,6 +61,23 @@ const userRoutes = require('./api/routes/userRoutes')
 app.use("/menu", menuRoutes);
 app.use("/carts", cartRoutes);
 app.use("/users",userRoutes)
+
+
+
+  // // Create a PaymentIntent with the order amount and currency
+  // const paymentIntent = await stripe.paymentIntents.create({
+  //   amount: calculateOrderAmount(items),
+  //   currency: "inr",
+  //   // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
+  //   automatic_payment_methods: {
+  //     enabled: true,
+  //   },
+  // });
+
+  // res.send({
+  //   clientSecret: paymentIntent.client_secret,
+  // });
+
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
