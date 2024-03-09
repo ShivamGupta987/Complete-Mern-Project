@@ -4,7 +4,7 @@
 
 **A revolutionary full-stack web application for food service enthusiasts and entrepreneurs. Elevating online food service interactions with advanced features and a flawless user experience.**
 
-![Food Service Platform Banner](https://via.placeholder.com/1000x300.png?text=Food+Service+Platform+Banner)
+![Food Service Platform ]
 
 </div>
 
