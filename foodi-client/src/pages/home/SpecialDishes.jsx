@@ -81,8 +81,8 @@ const SpecialDishes = () => {
         },
       },
     ],
-    nextArrow: <simpleNextArrow />,
-    prevArrow: <simplePrevArrow />,
+    nextArrow: <SimpleNextArrow />,
+    prevArrow: <SimplePrevArrow />,
   };
   return (
     <div className="section-conatiner my-20 mx-20 relative">
