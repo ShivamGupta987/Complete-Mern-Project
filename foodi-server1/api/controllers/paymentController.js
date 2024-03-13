@@ -6,6 +6,7 @@ const ObjectId = mongoose.Types.ObjectId;
 
 // Process payment and delete cart items
 exports.processPayment = async (req, res) => {
+    // console.log(req.body);
     const payment = req.body;
 
     try {
@@ -39,5 +40,17 @@ exports.getPayments = async (req, res) => {
         res.status(200).json({ result });
     } catch (error) {
         res.status(500).json({ message: error.message });
+    }
+};
+
+
+// get all payments by user
+
+exports.getAllPayments = async (req, res) => {
+    try {
+        const payments = await Payment.find({}).sort({createdAt: -1}).exec();
+        res.status(200).json(payments);
+    } catch (error) {
+        res.status(404).json({message: error.message});
     }
 };
