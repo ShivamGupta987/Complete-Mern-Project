@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 app.use(cors());
 app.use(express.json());
 
-const stripe = require("stripe")('sk_test_51OsI8zL6DPgaQzLVec9WccReRrRjvC3ihb7pxzbVMEK7SSj74l4Q5RSfjd6MRjpbgxxEWlcLmUGrVQvizVFJ2ywz00rA6vqLhF');
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 
 // mongodb conncetion using mongoosse
