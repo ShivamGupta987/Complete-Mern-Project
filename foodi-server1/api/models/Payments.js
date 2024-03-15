@@ -19,6 +19,9 @@ const paymentSchema = new Schema({
 
 });
 
-const Payment = mongoose.model('Payment', paymentSchema);
+// const Payment = mongoose.model('Payment', paymentSchema);
+// this solve the error overwrite model erorr
+const Payment = mongoose.models.Payment || mongoose.model('Payment', paymentSchema);
+
 
 module.exports = Payment;
