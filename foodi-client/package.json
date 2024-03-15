@@ -27,6 +27,7 @@
     "react-native-keychain": "^8.1.2",
     "react-router-dom": "^6.19.0",
     "react-slick": "^0.29.0",
+    "recharts": "^2.12.2",
     "slick-carousel": "^1.8.1",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.10.1",
