@@ -11,6 +11,10 @@ router.get('/',  paymentController.getPayments);
 
 router.get('/all',  paymentController.getAllPayments);
 
+// confirm payment status 
+
+router.patch('/:id',paymentController.getPaymentStatus)
+
 
 
 module.exports = router;
