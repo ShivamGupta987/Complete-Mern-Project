@@ -84,7 +84,7 @@ const Order = () => {
                     <tr key={index}>
                       <td>{index + 1}</td>
                       <td>{formatDate(item.createdAt)}</td>
-                      <td className="font-medium">{item.transitionId}</td>
+                      <td className="font-medium">{item.transactionId}</td>
                       <td>$ {item.price}</td>
                       <td>{item.status}</td>
                       <td>
