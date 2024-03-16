@@ -9,11 +9,12 @@ import { Link } from "react-router-dom";
 import Profile from "./Profile.jsx";
 import useCart from "../hooks/useCart";
 
+
 const Navbar = () => {
   const [isSticky, setSticky] = useState(false);
   const { user, loading } = useAuth();
   // console.log(user)
-
+ 
   const [cart, refetch] = useCart();
 
   useEffect(() => {
@@ -80,6 +81,7 @@ const Navbar = () => {
       </li>
     </>
   );
+
 
   return (
     <header className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
@@ -173,9 +175,11 @@ const Navbar = () => {
           {/* Login btn */}
           {
             // age user hai toh logout hsow hoga navbar ko warna login hoga agr user signin nhi hai toh
-            user ? <>
-              <Profile user={user} />
-              </>: 
+            user ? (
+              <>
+                <Profile user={user} />
+              </>
+            ) : (
               <button
                 onClick={() =>
                   document.getElementById("my_modal_5").showModal()
@@ -185,10 +189,21 @@ const Navbar = () => {
                 <FaRegUser />
                 Login
               </button>
-            
+            )
           }
+
           <Modal />
+   
+       
         </div>
+
+        <div>
+          
+        </div>
+      
+    
+      
+       
       </div>
     </header>
   );
