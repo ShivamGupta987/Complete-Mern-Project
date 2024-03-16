@@ -17,7 +17,7 @@ const Order = () => {
     queryFn: async () => {
       try {
         const response = await fetch(
-          `http://localhost:6001/payments?email=${user?.email}`,
+          `https://complete-mern-project-13.onrender.com//payments?email=${user?.email}`,
           {
             headers: {
               authorization: `Bearer ${token}`,

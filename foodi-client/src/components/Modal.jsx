@@ -36,7 +36,7 @@ const Modal = () => {
           email: data.email,
         };
         axios
-          .post("http://localhost:6001/users", userInfor)
+          .post("https://complete-mern-project-13.onrender.com//users", userInfor)
           .then((response) => {
             // console.log(response);
             alert("Signin successful!");

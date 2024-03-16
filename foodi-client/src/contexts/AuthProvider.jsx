@@ -54,7 +54,7 @@
         if (currentUser) {
           // IN currentUser USE JWT TOKEN 
           const userInfo = {email: currentUser.email}
-          axios.post('http://localhost:6001/jwt',userInfo)
+          axios.post('https://complete-mern-project-13.onrender.com//jwt',userInfo)
           .then( (response) => {
             // console.log(response.data.token);
             if(response.data.token){
