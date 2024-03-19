@@ -23,7 +23,7 @@ const CartPage = () => {
   // Handle quantity increase
   const handleIncrease = async (item) => {
     try {
-      const response = await fetch(`https://complete-mern-project-13.onrender.com//carts/${item._id}`, {
+      const response = await fetch(`https://complete-mern-project-13.onrender.com/carts/${item._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
