@@ -55,7 +55,7 @@ const CartPage = () => {
     if (item.quantity > 1) {
       try {
         const response = await fetch(
-          `https://complete-mern-project-13.onrender.com//carts/${item._id}`,
+          `https://complete-mern-project-13.onrender.com/carts/${item._id}`,
           {
             method: "PUT",
             headers: {
@@ -117,7 +117,7 @@ const CartPage = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://complete-mern-project-13.onrender.com//carts/${item._id}`).then(response => {
+        axios.delete(`https://complete-mern-project-13.onrender.com/carts/${item._id}`).then(response => {
           if (response) {
             refetch();
              Swal.fire("Deleted!", "Your file has been deleted.", "success");
