@@ -40,57 +40,6 @@ Welcome to the **Food Service Platform**, a gateway for food service enthusiasts
 
 ## 🏁 Getting Started
 
-### Prerequisites
-
-To get started with this project, you'll need the following installed on your system:
-
-- [Node.js](https://nodejs.org/en/)
-- [MongoDB](https://www.mongodb.com/) (or use MongoDB Atlas for cloud setup)
-- A [Firebase](https://firebase.google.com/) account for authentication services
-
-### 1. Clone the Repository
-
-Clone the project to your local machine using Git:
-
-```bash
-git clone https://github.com/your-repo/complete-food-web.git
-cd complete-food-web
-
-2. Install Dependencies
-For both frontend and backend, run the following command:
-
-bash
-Copy
-Edit
-npm install
-3. Firebase Setup
-Set up Firebase Authentication in your Firebase console.
-Obtain your Firebase configuration keys and add them to the appropriate configuration files in the project.
-4. Configure Environment Variables
-Create a .env file in the root directory and include the following variables:
-
-env
-Copy
-Edit
-MONGO_URI=your_mongodb_connection_string
-FIREBASE_API_KEY=your_firebase_api_key
-FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
-FIREBASE_PROJECT_ID=your_firebase_project_id
-FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
-FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
-FIREBASE_APP_ID=your_firebase_app_id
-STRIPE_SECRET_KEY=your_stripe_secret_key
-5. Start the Project
-To start the backend server, run the following command:
-bash
-Copy
-Edit
-npm start
-For the frontend, navigate to the client folder and run:
-bash
-Copy
-Edit
-npm run dev
 🎯 Deployment
 The application is live on Vercel. You can access it here:
 
